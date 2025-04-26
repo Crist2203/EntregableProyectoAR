@@ -32,16 +32,18 @@ public class CarManager : MonoBehaviour
 
     private void Update()
     {
-        if (Car == null && WasTapped() && Reticle.CurrentPlane != null)
+        if (Car == null && WasTapped() && Reticle.CurrentPlane != null && CarSelectionManager.selectedCarPrefab != null)
         {
-            // Spawn our car at the reticle location.
-            var obj = GameObject.Instantiate(CarPrefab);
+            var obj = GameObject.Instantiate(CarSelectionManager.selectedCarPrefab);
             Car = obj.GetComponent<CarBehaviour>();
             Car.Reticle = Reticle;
             Car.transform.position = Reticle.transform.position;
             DrivingSurfaceManager.LockPlane(Reticle.CurrentPlane);
+
+            FindObjectOfType<Timer>().StartTimer();
         }
     }
+
 
     private bool WasTapped()
     {
