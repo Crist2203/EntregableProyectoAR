@@ -24,6 +24,17 @@ public class ScoreManager : MonoBehaviour
         UpdateScoreText();
     }
 
+    public void ResetScore()
+    {
+        score = 0;
+        UpdateScoreText();
+    }
+
+    public int GetTotalScore()
+    {
+        return score;
+    }
+
     void UpdateScoreText()
     {
         scoreText.text = "Score: " + score.ToString();

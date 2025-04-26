@@ -23,6 +23,9 @@ public class Timer : MonoBehaviour
                 timeRemaining = 0;
                 isRunning = false;
                 UpdateTimerDisplay();
+
+                // ?? Aquí llamamos a Game Over cuando se acaba el tiempo
+                UIManager.instance.MostrarGameOver();
             }
         }
     }
